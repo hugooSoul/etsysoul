@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.2.0"
+ruby '2.2.0'
 
 gem 'rails', '4.2.0'
 gem 'sass-rails', '~> 5.0'
@@ -10,6 +10,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem "paperclip", "~> 4.2"
+gem "paperclip-dropbox", ">= 1.1.7"
+gem "figaro"
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
