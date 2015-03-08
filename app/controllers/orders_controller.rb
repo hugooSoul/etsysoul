@@ -33,12 +33,19 @@ class OrdersController < ApplicationController
       charge = Stripe::Charge.create(
         :amount => (@listing.price * 100).floor,
         :currency => "usd",
-        :card => token
+        :card => token,
+        :source => token
         )
       flash[:notice] = "Thanks for ordering!"
     rescue Stripe::CardError => e 
       flash[:danger] = e.message
     end
+
+    transfer = Stripe::Transfer.create(
+      :amout => (@listing.price * 95).floor,
+      :currency => "usd",
+      :recipient => @seller.recipient
+      )
 
     respond_to do |format|
       if @order.save
